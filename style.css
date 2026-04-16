@@ -87,7 +87,7 @@ nav {
 
 .btn-primary {
   background: var(--purple);
-  color: #fff;
+  color: #F9FAFC;
 }
 
 .btn-primary:hover {
@@ -231,11 +231,16 @@ section {
 }
 
 .hero-title {
-  font-size: 64px;
+  font-size: 40px;
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -2.5px;
+  line-height: 1.1;
+  letter-spacing: -1px;
   margin-bottom: 22px;
+  white-space: nowrap;
+}
+
+.highlight-cyan {
+  color: #00D4FF;
 }
 
 .hero-title .highlight {
@@ -393,7 +398,7 @@ section {
   left: 50%;
   transform: translateX(-50%);
   background: var(--purple);
-  color: #fff;
+  color: #F9FAFC;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
