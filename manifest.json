@@ -1,0 +1,81 @@
+{
+  "manifest_version": 3,
+  "name": "Cypher",
+  "version": "1.1.0",
+  "description": "Cypher reveals AI-generated images. Get instant confidence scores and clear explanations right where you browse.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.facebook.com/*",
+    "https://facebook.com/*",
+    "https://x.com/*",
+    "https://twitter.com/*",
+    "https://www.etsy.com/*",
+    "https://etsy.com/*",
+    "https://www.ribblr.com/*",
+    "https://ribblr.com/*",
+    "https://www.ravelry.com/*",
+    "https://ravelry.com/*",
+    "https://www.instagram.com/*",
+    "https://instagram.com/*",
+    "https://www.pinterest.com/*",
+    "https://pinterest.com/*",
+    "https://www.reddit.com/*",
+    "https://reddit.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.aiornot.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.facebook.com/*",
+        "https://facebook.com/*",
+        "https://x.com/*",
+        "https://twitter.com/*",
+        "https://www.etsy.com/*",
+        "https://etsy.com/*",
+        "https://www.ribblr.com/*",
+        "https://ribblr.com/*",
+        "https://www.ravelry.com/*",
+        "https://ravelry.com/*",
+        "https://www.instagram.com/*",
+        "https://instagram.com/*",
+        "https://www.pinterest.com/*",
+        "https://pinterest.com/*",
+        "https://www.reddit.com/*",
+        "https://reddit.com/*"
+      ],
+      "js": [
+        "scripts/content.js"
+      ],
+      "css": [
+        "styles/detector.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/icon16.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
