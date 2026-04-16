@@ -121,6 +121,8 @@ section {
   padding: 100px 0;
 }
 
+/* ─── TYPOGRAPHIC SCALE (Inter only, weight/size varies by purpose) ─── */
+/* Labels: 11px / 700 / tracked caps — orientation/category */
 .section-label {
   display: inline-block;
   font-size: 11px;
@@ -131,6 +133,7 @@ section {
   margin-bottom: 14px;
 }
 
+/* Section headings: 38px / 800 / tight tracking — primary hierarchy */
 .section-title {
   font-size: 38px;
   font-weight: 800;
@@ -139,11 +142,54 @@ section {
   margin-bottom: 16px;
 }
 
+/* Section subtext: 17px / 400 / relaxed — supporting body copy */
 .section-sub {
   font-size: 17px;
+  font-weight: 400;
   color: var(--text-muted);
   line-height: 1.75;
   max-width: 540px;
+}
+
+/* Card headings: 16px / 700 — component-level hierarchy */
+.step h3, .feature-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+/* Card body: 14px / 400 — secondary readable copy */
+.step p, .feature-card p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Pricing tier label: 12px / 600 / tracked caps */
+.pricing-tier {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Pricing period: 13px / 400 */
+.pricing-period {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* Feature list items: 14px / 400 */
+.pricing-features li {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Nav links: 14px / 500 */
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* ─── HERO ─── */
@@ -408,6 +454,15 @@ section {
 
 .pricing-features li.muted {
   opacity: 0.4;
+}
+
+.pricing-includes {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
 }
 
 .pricing-card .btn {
