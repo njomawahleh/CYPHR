@@ -43,13 +43,16 @@ nav {
 }
 
 .nav-logo {
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: var(--text);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-.nav-logo .accent { color: var(--cyan); }
+.nav-logo img {
+  display: block;
+  height: 32px;
+  width: auto;
+}
 
 .nav-links {
   display: flex;
@@ -252,6 +255,13 @@ section {
   gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.hero-wordmark {
+  width: 320px;
+  height: auto;
+  margin: 0 auto 32px;
+  display: block;
 }
 
 .hero-note {
