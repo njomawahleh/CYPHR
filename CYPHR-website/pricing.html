@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CYPHR pricing — start free, upgrade when you need more. Simple, honest plans with no hidden fees." />
+  <title>Pricing — CYPHR</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .pricing-page-header {
+      text-align: center;
+      padding: 100px 0 60px;
+    }
+    .pricing-page-header .section-label {
+      display: block;
+      margin-bottom: 14px;
+    }
+    .pricing-page-header h1 {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .pricing-page-header p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 72px;
+      font-size: 14px;
+    }
+    .compare-table th {
+      padding: 18px 24px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table th:not(:first-child) {
+      text-align: center;
+    }
+    .compare-table td {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      vertical-align: middle;
+    }
+    .compare-table td:not(:first-child) {
+      text-align: center;
+    }
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+    .compare-table .feature-name {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .compare-table .yes {
+      color: var(--cyan);
+      font-size: 16px;
+    }
+    .compare-table .no {
+      color: var(--border);
+      font-size: 16px;
+    }
+    .compare-table .tier-header {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .compare-table .tier-price {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .compare-table .featured-col {
+      background: rgba(124, 58, 237, 0.05);
+    }
+    .compare-table .featured-col.tier-header-cell {
+      border-top: 2px solid var(--purple);
+    }
+    .guarantee {
+      text-align: center;
+      padding: 60px 0;
+      color: var(--text-muted);
+      font-size: 15px;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+    .guarantee strong {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="images/cyphr-logo-nav.png" alt="CYPHR" height="32" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html#how-it-works">How it works</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </nav>
+
+  <main>
+  <!-- PAGE HEADER -->
+  <div class="container">
+    <div class="pricing-page-header">
+      <span class="section-label">Pricing</span>
+      <h1>Simple, honest pricing.</h1>
+      <p>Start free. Upgrade when you need more. No hidden fees, no lock-in — cancel any time.</p>
+    </div>
+
+    <!-- PRICING CARDS -->
+    <div class="pricing-grid">
+
+      <!-- FREE -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Free</div>
+        <div class="pricing-price">$0</div>
+        <div class="pricing-period">Forever free</div>
+        <hr class="pricing-divider" />
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> 5 checks per day</li>
+          <li><span class="check">✓</span> Facebook &amp; X/Twitter detection</li>
+          <li><span class="check">✓</span> Basic AI verdict</li>
+        </ul>
+        <a href="#" class="btn btn-outline">Get started free</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">Pro</div>
+        <div class="pricing-price"><sup>$</sup>2</div>
+        <div class="pricing-period">per month</div>
+        <hr class="pricing-divider" />
+        <p class="pricing-includes">Everything in Free, plus:</p>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> 50 checks per day</li>
+          <li><span class="check">✓</span> Confidence scores</li>
+          <li><span class="check">✓</span> Priority processing</li>
+          <li><span class="check">✓</span> Email support</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Get Pro</a>
+      </div>
+
+      <!-- ULTRA -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Ultra</div>
+        <div class="pricing-price"><sup>$</sup>5</div>
+        <div class="pricing-period">per month</div>
+        <hr class="pricing-divider" />
+        <p class="pricing-includes">Everything in Pro, plus:</p>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Unlimited checks</li>
+          <li><span class="check">✓</span> Full analysis report</li>
+          <li><span class="check">✓</span> Priority support</li>
+        </ul>
+        <a href="#" class="btn btn-outline">Get Ultra</a>
+      </div>
+
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <section>
+      <span class="section-label">Full comparison</span>
+      <h2 class="section-title">Everything side by side.</h2>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="tier-header-cell">
+              <span class="tier-header">Free</span><br />
+              <span class="tier-price">$0 / mo</span>
+            </th>
+            <th class="tier-header-cell featured-col">
+              <span class="tier-header">Pro</span><br />
+              <span class="tier-price">$2 / mo</span>
+            </th>
+            <th class="tier-header-cell">
+              <span class="tier-header">Ultra</span><br />
+              <span class="tier-price">$5 / mo</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature-name">Daily checks</td>
+            <td>2</td>
+            <td class="featured-col">10</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Facebook detection</td>
+            <td><span class="yes">✓</span></td>
+            <td class="featured-col"><span class="yes">✓</span></td>
+            <td><span class="yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">X/Twitter detection</td>
+            <td><span class="yes">✓</span></td>
+            <td class="featured-col"><span class="yes">✓</span></td>
+            <td><span class="yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Basic AI verdict</td>
+            <td><span class="yes">✓</span></td>
+            <td class="featured-col"><span class="yes">✓</span></td>
+            <td><span class="yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Confidence scores</td>
+            <td><span class="no">—</span></td>
+            <td class="featured-col"><span class="yes">✓</span></td>
+            <td><span class="yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Priority processing</td>
+            <td><span class="no">—</span></td>
+            <td class="featured-col"><span class="yes">✓</span></td>
+            <td><span class="yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Full analysis report</td>
+            <td><span class="no">—</span></td>
+            <td class="featured-col"><span class="no">—</span></td>
+            <td><span class="yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Support</td>
+            <td>—</td>
+            <td class="featured-col">Email</td>
+            <td>Priority</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="guarantee">
+        <strong>No risk.</strong> You can downgrade or cancel your plan at any time from your account settings. No questions asked.
+      </div>
+    </section>
+  </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" aria-label="CYPHR home"><img src="images/cyphr-logo-nav.png" alt="CYPHR" height="24" /></a>
+    <ul class="footer-links">
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="mailto:hello@getcyphr.com">Contact</a></li>
+    </ul>
+    <span class="footer-copy">&copy; 2026 CYPHR. All rights reserved.</span>
+  </footer>
+
+</body>
+</html>
