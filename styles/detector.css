@@ -78,7 +78,7 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Header with lettermark ===== */
+/* ===== Header with lettermark (also acts as drag handle) ===== */
 .ai-detector-header-bar {
   display: flex;
   align-items: center;
@@ -86,6 +86,18 @@
   padding: 14px 18px;
   border-bottom: 1px solid var(--cyphr-rule);
 }
+.ai-detector-drag-handle {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.ai-detector-drag-handle:active { cursor: grabbing; }
+.ai-detector-results.ai-detector-dragging {
+  box-shadow: 0 0 0 1px rgba(0,212,255,0.45), 0 32px 80px rgba(0,0,0,0.7);
+  transition: box-shadow 0.15s ease;
+}
+.ai-detector-results.ai-detector-dragging .ai-detector-drag-handle { cursor: grabbing; }
 
 .ai-detector-brand {
   display: flex;
@@ -161,6 +173,20 @@
 .ai-detector-close:hover {
   border-color: var(--cyphr-violet);
   color: var(--cyphr-paper);
+  background: rgba(124,58,237,0.15);
+  box-shadow: 0 0 12px rgba(124,58,237,0.4);
+  transform: scale(1.08);
+}
+.ai-detector-close:active { transform: scale(1); }
+.ai-detector-close:focus-visible {
+  outline: 2px solid var(--cyphr-cyan);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-detector-results { animation: none !important; }
+  .ai-detector-close:hover { transform: none !important; }
+  .ai-detector-check-btn:hover { transform: translate(-50%, -50%) !important; }
+  *{transition-duration:0.01ms !important;}
 }
 
 /* ===== Verdict card ===== */

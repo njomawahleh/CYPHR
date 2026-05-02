@@ -34,17 +34,26 @@ body{font-family:'Inter Tight',sans-serif;background:var(--ink);color:var(--pape
 
 /* ===== NAV ===== */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(13,13,13,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;transition:transform 0.2s ease, filter 0.2s ease;}
+.nav-brand:hover{transform:translateY(-1px);filter:drop-shadow(0 0 8px rgba(0,212,255,0.4));}
+.nav-brand:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;}
 .lm-nav{width:26px;height:26px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .lm-nav .c{font-family:'Unbounded',sans-serif;font-weight:900;font-size:16px;color:var(--paper);line-height:1;position:relative;z-index:1;}
 .lm-nav svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
 .nav-wm{font-family:'Unbounded',sans-serif;font-weight:900;font-size:14px;letter-spacing:-0.02em;color:var(--paper);}
 .nav-links{display:flex;gap:28px;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;}
-.nav-links a{color:rgba(249,250,252,0.55);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--paper);}
-.nav-cta{font-family:'Unbounded',sans-serif;font-weight:800;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--cyan);color:var(--ink);padding:10px 20px;text-decoration:none;transition:background 0.15s;}
-.nav-cta:hover{background:#33DCFF;}
-.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;padding:4px;border:none;background:transparent;}
+.nav-links a{color:rgba(249,250,252,0.55);text-decoration:none;transition:color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;display:inline-block;position:relative;padding-bottom:2px;}
+.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left center;transition:transform 0.25s ease;}
+.nav-links a:hover{color:var(--paper);text-shadow:0 0 10px rgba(0,212,255,0.5);transform:translateY(-1px);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-links a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;color:var(--paper);}
+.nav-cta{font-family:'Unbounded',sans-serif;font-weight:800;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--cyan);color:var(--ink);padding:10px 20px;text-decoration:none;transition:background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;display:inline-block;}
+.nav-cta:hover{background:#33DCFF;transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,212,255,0.4);}
+.nav-cta:active{transform:translateY(0);box-shadow:0 2px 8px rgba(0,212,255,0.4);}
+.nav-cta:focus-visible{outline:2px solid var(--paper);outline-offset:3px;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;padding:4px;border:none;background:transparent;transition:transform 0.2s ease, filter 0.2s ease;}
+.nav-hamburger:hover{transform:scale(1.1);filter:drop-shadow(0 0 8px rgba(0,212,255,0.5));}
+.nav-hamburger:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;}
 .nav-hamburger span{display:block;height:1.5px;background:var(--paper);transition:all 0.25s ease;transform-origin:center;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
@@ -52,12 +61,15 @@ body{font-family:'Inter Tight',sans-serif;background:var(--ink);color:var(--pape
 .nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(320px,85vw);background:var(--ink-2);border-left:1px solid var(--rule);z-index:99;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;padding:88px 32px 48px;}
 .nav-drawer.open{transform:translateX(0);}
 .nav-drawer-links{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule);}
-.nav-drawer-links a{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;color:rgba(249,250,252,0.6);text-decoration:none;padding:18px 0;border-bottom:1px solid var(--rule);transition:color 0.2s;display:flex;justify-content:space-between;align-items:center;}
-.nav-drawer-links a::after{content:'→';opacity:0;transition:opacity 0.2s;}
-.nav-drawer-links a:hover{color:var(--cyan);}
-.nav-drawer-links a:hover::after{opacity:1;}
-.nav-drawer .drawer-cta{margin-top:32px;font-family:'Unbounded',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;background:var(--cyan);color:var(--ink);padding:16px 24px;text-align:center;text-decoration:none;display:block;transition:background 0.15s;}
-.nav-drawer .drawer-cta:hover{background:#33DCFF;}
+.nav-drawer-links a{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;color:rgba(249,250,252,0.6);text-decoration:none;padding:18px 12px 18px 0;border-bottom:1px solid var(--rule);transition:color 0.2s ease, padding-left 0.2s ease, background 0.2s ease;display:flex;justify-content:space-between;align-items:center;}
+.nav-drawer-links a::after{content:'→';opacity:0;transform:translateX(-4px);transition:opacity 0.2s ease, transform 0.2s ease;}
+.nav-drawer-links a:hover{color:var(--cyan);padding-left:8px;background:rgba(0,212,255,0.06);}
+.nav-drawer-links a:hover::after{opacity:1;transform:translateX(0);}
+.nav-drawer-links a:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;color:var(--cyan);}
+.nav-drawer .drawer-cta{margin-top:32px;font-family:'Unbounded',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;background:var(--cyan);color:var(--ink);padding:16px 24px;text-align:center;text-decoration:none;display:block;transition:background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;}
+.nav-drawer .drawer-cta:hover{background:#33DCFF;transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,212,255,0.35);}
+.nav-drawer .drawer-cta:active{transform:translateY(0);box-shadow:0 2px 8px rgba(0,212,255,0.4);}
+.nav-drawer .drawer-cta:focus-visible{outline:2px solid var(--paper);outline-offset:3px;}
 .nav-drawer-foot{margin-top:auto;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(249,250,252,0.25);}
 .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:98;opacity:0;pointer-events:none;transition:opacity 0.3s ease;backdrop-filter:blur(4px);}
 .nav-overlay.open{opacity:1;pointer-events:all;}
@@ -91,11 +103,16 @@ body{font-family:'Inter Tight',sans-serif;background:var(--ink);color:var(--pape
 .hero-title em{font-weight:700;color:var(--cyan);}
 .hero-sub{font-size:17px;line-height:1.6;color:rgba(249,250,252,0.65);max-width:560px;margin:0 auto;}
 .hero-actions{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:8px;}
-.btn{font-family:'Unbounded',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;padding:16px 28px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none;transition:all 0.2s ease;}
+.btn{font-family:'Unbounded',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;padding:16px 28px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none;transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;}
+.btn span{transition:transform 0.25s ease;}
+.btn:hover span{transform:translateX(4px);}
 .btn-primary{background:var(--cyan);color:var(--ink);}
-.btn-primary:hover{background:#33DCFF;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,212,255,0.25);}
+.btn-primary:hover{background:#33DCFF;transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,212,255,0.4),0 0 0 1px rgba(0,212,255,0.15);}
+.btn-primary:active{transform:translateY(0);box-shadow:0 4px 10px rgba(0,212,255,0.4);}
 .btn-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(249,250,252,0.2);}
-.btn-ghost:hover{border-color:var(--violet);background:rgba(124,58,237,0.08);}
+.btn-ghost:hover{border-color:var(--violet);background:rgba(124,58,237,0.12);transform:translateY(-2px);box-shadow:0 12px 28px rgba(124,58,237,0.3);}
+.btn-ghost:active{transform:translateY(0);box-shadow:0 4px 10px rgba(124,58,237,0.35);}
+.btn:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding-top:40px;border-top:1px solid var(--rule);position:relative;z-index:2;}
 .stat .k{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(249,250,252,0.4);margin-bottom:6px;}
 .stat .v{font-family:'Unbounded',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.01em;}
@@ -245,19 +262,26 @@ section.light .sec-label{color:var(--violet);}
 .plan-feat:last-child{border-bottom:none;}
 .plan-feat .check{width:16px;height:16px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);}
 .plan-feat .check.dim{color:rgba(249,250,252,0.2);}
-.plan-cta{margin-top:auto;font-family:'Unbounded',sans-serif;font-weight:800;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--cyan);color:var(--ink);padding:14px 24px;text-align:center;text-decoration:none;cursor:pointer;border:none;transition:background 0.15s;display:block;}
-.plan-cta:hover{background:#33DCFF;}
-.plan-cta.ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(249,250,252,0.2);}
-.plan-cta.ghost:hover{border-color:var(--violet);background:rgba(124,58,237,0.1);}
+.plan-cta{margin-top:auto;font-family:'Unbounded',sans-serif;font-weight:800;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--cyan);color:var(--ink);padding:14px 24px;text-align:center;text-decoration:none;cursor:pointer;border:none;transition:background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;display:block;}
+.plan-cta:hover{background:#33DCFF;transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,212,255,0.4);}
+.plan-cta:active{transform:translateY(0);box-shadow:0 4px 10px rgba(0,212,255,0.4);}
+.plan-cta.ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(249,250,252,0.2);transition:background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;}
+.plan-cta.ghost:hover{border-color:var(--violet);background:rgba(124,58,237,0.12);transform:translateY(-2px);box-shadow:0 12px 28px rgba(124,58,237,0.3);}
+.plan-cta.ghost:active{transform:translateY(0);box-shadow:0 4px 10px rgba(124,58,237,0.35);}
+.plan-cta:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+.plan-cta.ghost:focus-visible{outline-color:var(--violet);}
 @media(max-width:900px){.pricing-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:580px){.pricing-grid{grid-template-columns:1fr;}}
 
 /* ===== FAQ ===== */
 .faq-list{margin-top:64px;border-top:1px solid var(--rule);}
 .faq-item{border-bottom:1px solid var(--rule);}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:24px 0;cursor:pointer;gap:24px;}
-.faq-q-text{font-family:'Unbounded',sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.01em;line-height:1.3;}
-.faq-toggle{width:28px;height:28px;border:1.5px solid rgba(249,250,252,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:16px;color:rgba(249,250,252,0.5);transition:all 0.2s;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:24px 0;cursor:pointer;gap:24px;transition:padding 0.2s ease;}
+.faq-q-text{font-family:'Unbounded',sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.01em;line-height:1.3;transition:color 0.2s ease, transform 0.2s ease;}
+.faq-q:hover .faq-q-text{color:var(--cyan);transform:translateX(4px);}
+.faq-q:hover .faq-toggle{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,0.35);transform:scale(1.08);}
+.faq-q:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;}
+.faq-toggle{width:28px;height:28px;border:1.5px solid rgba(249,250,252,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:16px;color:rgba(249,250,252,0.5);transition:border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;}
 .faq-item.open .faq-toggle{border-color:var(--cyan);color:var(--cyan);}
 .faq-a{display:none;padding:0 0 24px;font-family:'Fraunces',serif;font-style:italic;font-size:16px;line-height:1.6;color:rgba(249,250,252,0.7);max-width:720px;}
 .faq-item.open .faq-a{display:block;}
@@ -278,8 +302,18 @@ footer{padding:80px 0 48px;border-bottom:none;}
 .footer-brand .wm em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--cyan);}
 .footer-brand .tagline{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:rgba(249,250,252,0.6);}
 .footer-links{display:flex;flex-direction:column;gap:10px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;}
-.footer-links a{color:rgba(249,250,252,0.45);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--cyan);}
+.footer-links a{color:rgba(249,250,252,0.45);text-decoration:none;transition:color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;display:inline-block;}
+.footer-links a:hover{color:var(--cyan);transform:translateX(-3px);text-shadow:0 0 10px rgba(0,212,255,0.5);}
+.footer-links a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+
+/* ===== INLINE LINKS (e.g. FAQ contact) + REDUCED MOTION ===== */
+.sec-sub a{transition:color 0.2s ease, border-color 0.2s ease, text-shadow 0.2s ease;}
+.sec-sub a:hover{color:#33DCFF !important;border-bottom-color:rgba(0,212,255,0.8) !important;text-shadow:0 0 10px rgba(0,212,255,0.4);}
+.sec-sub a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+  .btn:hover,.nav-cta:hover,.plan-cta:hover,.nav-drawer .drawer-cta:hover,.nav-brand:hover,.nav-hamburger:hover,.nav-links a:hover,.footer-links a:hover,.faq-q:hover .faq-q-text{transform:none !important;}
+}
 .footer-bottom{display:flex;justify-content:space-between;padding-top:24px;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(249,250,252,0.3);flex-wrap:wrap;gap:12px;}
 @media(max-width:700px){.footer-inner{grid-template-columns:1fr;}.footer-links{text-align:left;}}
 </style>
@@ -298,7 +332,6 @@ footer{padding:80px 0 48px;border-bottom:none;}
   <nav class="nav-links">
     <a href="#how">How it works</a>
     <a href="#features">Features</a>
-    <a href="#try">Try it</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
   </nav>
@@ -314,7 +347,6 @@ footer{padding:80px 0 48px;border-bottom:none;}
   <div class="nav-drawer-links">
     <a href="#how" onclick="toggleDrawer()">How it works</a>
     <a href="#features" onclick="toggleDrawer()">Features</a>
-    <a href="#try" onclick="toggleDrawer()">Try it</a>
     <a href="#pricing" onclick="toggleDrawer()">Pricing</a>
     <a href="#faq" onclick="toggleDrawer()">FAQ</a>
     <a href="#privacy" onclick="toggleDrawer()">Privacy</a>
@@ -419,68 +451,7 @@ footer{padding:80px 0 48px;border-bottom:none;}
   </div>
 </section>
 
-<!-- TRY IT — LIVE DETECTOR -->
-<section id="try">
-  <div class="shell">
-    <div class="sec-label">Live detector</div>
-    <div class="detector-wrap">
-      <div class="detector-desc">
-        <h3>Upload an image.<br/><em>Get the truth.</em></h3>
-        <p>This is CYPHR's detection engine, running right here on the page. Drop any image into the panel and we'll analyze it for signs of AI generation. Same as the Chrome extension!</p>
-        <div class="detector-meta">
-          <div class="d-row"><span class="k">Model</span><span class="v">Heuristic + Vision AI</span></div>
-          <div class="d-row"><span class="k">Privacy</span><span class="v">Image not stored</span></div>
-          <div class="d-row"><span class="k">Supported formats</span><span class="v">JPG · PNG · WebP</span></div>
-          <div class="d-row"><span class="k">Max file size</span><span class="v">10 MB</span></div>
-        </div>
-      </div>
-
-      <!-- POPUP WIDGET -->
-      <div>
-        <div class="popup" id="popup">
-          <div class="popup-header">
-            <div class="popup-brand">
-              <div class="p-lm">
-                <span class="c">C</span>
-                <svg viewBox="0 0 28 28" fill="none"><polyline points="7,0 0,0 0,7" stroke="#7C3AED" stroke-width="2"/><polyline points="21,0 28,0 28,7" stroke="#7C3AED" stroke-width="2"/><polyline points="28,21 28,28 21,28" stroke="#7C3AED" stroke-width="2"/><polyline points="0,21 0,28 7,28" stroke="#7C3AED" stroke-width="2"/></svg>
-              </div>
-              <span class="p-wm">CYPHR</span>
-            </div>
-            <span class="p-meta" id="p-status">Ready</span>
-          </div>
-          <div class="popup-image" id="popup-image" onclick="document.getElementById('file-input').click()">
-            <div class="bg-hatch"></div>
-            <div class="drop-hint" id="drop-hint">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v12M8 12l4 4 4-4" stroke="#F9FAFC" stroke-width="1.5"/><path d="M4 20h16" stroke="#F9FAFC" stroke-width="1.5"/></svg>
-              Drop image or click to upload
-            </div>
-            <img id="img-preview" class="preview" style="display:none;" alt=""/>
-            <div class="vf-corners" id="vf-corners" style="display:none;">
-              <svg viewBox="0 0 364 110" fill="none" preserveAspectRatio="none">
-                <polyline points="20,0 0,0 0,20" stroke="#7C3AED" stroke-width="2"/>
-                <polyline points="344,0 364,0 364,20" stroke="#7C3AED" stroke-width="2"/>
-                <polyline points="364,90 364,110 344,110" stroke="#7C3AED" stroke-width="2"/>
-                <polyline points="0,90 0,110 20,110" stroke="#7C3AED" stroke-width="2"/>
-              </svg>
-            </div>
-            <div class="scan-bar" id="scan-bar"></div>
-          </div>
-          <div class="popup-content" id="popup-content">
-            <div class="idle-prompt">
-              <div class="idle-h">No image selected.</div>
-              <div class="idle-p">Drop an image above or click to choose a file. CYPHR will analyze it instantly.</div>
-            </div>
-          </div>
-          <div class="popup-footer-bar" id="popup-footer-bar">
-            <button class="pbtn pbtn-primary" id="scan-btn" onclick="startScan()" disabled>Upload an image</button>
-            <button class="pbtn pbtn-ghost" onclick="resetPopup()">Reset</button>
-          </div>
-        </div>
-        <input type="file" id="file-input" accept="image/*" style="display:none;" onchange="handleFile(event)"/>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- LIVE DETECTOR REMOVED — examples + testimonials section will go here. -->
 
 <!-- PRICING -->
 <section id="pricing" style="background:var(--ink-2);">
@@ -603,8 +574,8 @@ footer{padding:80px 0 48px;border-bottom:none;}
       </div>
       <div class="privacy-card">
         <div class="p-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="#7C3AED" stroke-width="1.5"/><path d="M9 6v3l2 2" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="square"/></svg></div>
-        <div class="p-h">No scan history (Free)</div>
-        <p class="p-p">On the free plan, scan results are never logged. Close the popup and they're gone. Pro users can opt into local history stored only in their browser.</p>
+        <div class="p-h">No scan history</div>
+        <p class="p-p">Scan results are never logged. Close the popup and they're gone.</p>
       </div>
       <div class="privacy-card">
         <div class="p-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 9l3 3 5-5" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="square"/><rect x="2" y="2" width="14" height="14" stroke="#7C3AED" stroke-width="1.5"/></svg></div>
@@ -665,203 +636,6 @@ function toggleFaq(el) {
   }
 }
 
-/* ===== LIVE DETECTOR (Gemini API) ===== */
-// Proxy URL — set this to your Vercel deployment URL
-const PROXY_URL = '/api/gemini';
-const GEMINI_MODEL = 'gemini-2.5-flash';
-
-let currentFile = null;
-let currentDataUrl = null;
-
-function handleFile(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  if (file.size > 10 * 1024 * 1024) { alert('File too large \u2014 max 10MB.'); return; }
-  currentFile = file;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    currentDataUrl = ev.target.result;
-    const img = document.getElementById('img-preview');
-    img.src = currentDataUrl;
-    img.style.display = 'block';
-    document.getElementById('drop-hint').style.display = 'none';
-    document.getElementById('vf-corners').style.display = 'block';
-    document.getElementById('p-status').textContent = 'Image loaded';
-    document.getElementById('popup-content').innerHTML = '<div class="idle-prompt"><div class="idle-h">Ready to scan.</div><div class="idle-p">Click \u201cScan image\u201d to analyze this image for AI generation signals.</div></div>';
-    const btn = document.getElementById('scan-btn');
-    btn.textContent = 'Scan image \u2192';
-    btn.disabled = false;
-  };
-  reader.readAsDataURL(file);
-}
-
-function resetPopup() {
-  currentFile = null; currentDataUrl = null;
-  document.getElementById('img-preview').style.display = 'none';
-  document.getElementById('img-preview').src = '';
-  document.getElementById('drop-hint').style.display = 'flex';
-  document.getElementById('vf-corners').style.display = 'none';
-  document.getElementById('scan-bar').style.display = 'none';
-  document.getElementById('p-status').textContent = 'Ready';
-  document.getElementById('popup-content').innerHTML = '<div class="idle-prompt"><div class="idle-h">No image selected.</div><div class="idle-p">Drop an image above or click to choose a file. CYPHR will analyze it instantly.</div></div>';
-  const btn = document.getElementById('scan-btn');
-  btn.textContent = 'Upload an image';
-  btn.disabled = true;
-  btn.onclick = function(){ startScan(); };
-  document.getElementById('file-input').value = '';
-}
-
-function generateScanId() {
-  const now = new Date();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const hex = Math.random().toString(16).substring(2, 6).toUpperCase();
-  return month + day + '-CYP-' + hex;
-}
-
-async function startScan() {
-  if (!currentDataUrl) return;
-
-  // Scanning UI
-  document.getElementById('scan-bar').style.display = 'block';
-  document.getElementById('p-status').textContent = 'Scanning\u2026';
-  document.getElementById('scan-btn').disabled = true;
-  document.getElementById('scan-btn').textContent = 'Scanning\u2026';
-  document.getElementById('popup-content').innerHTML =
-    '<div class="scanning-ui">' +
-      '<div class="scan-label-row"><span class="scan-txt">Analyzing</span><span class="scan-dots"><span></span><span></span><span></span></span></div>' +
-      '<div class="progress-track"><div class="progress-fill"></div></div>' +
-      '<div class="scan-steps">' +
-        '<div class="s-step done"><span class="s-dot"></span>Image loaded</div>' +
-        '<div class="s-step done"><span class="s-dot"></span>Metadata extracted</div>' +
-        '<div class="s-step active"><span class="s-dot"></span>AI signature check</div>' +
-        '<div class="s-step"><span class="s-dot"></span>Confidence scored</div>' +
-      '</div>' +
-    '</div>';
-
-  try {
-    const base64 = currentDataUrl.split(',')[1];
-    const mimeType = currentDataUrl.split(';')[0].split(':')[1];
-
-    const prompt = 'Analyze this image to determine if it is AI-generated or authentic/real.\n\n' +
-      'Focus on: anatomical impossibilities, perfect symmetry, garbled text, inconsistent lighting, unnatural texture repetition, impossible physics, unnaturally smooth surfaces, missing EXIF clues, diffusion artifacts, noise profile anomalies.\n\n' +
-      'Also look for authentic signs: natural imperfections, consistent physics, readable text, realistic lighting, camera artifacts, texture depth.\n\n' +
-      'Respond ONLY with valid JSON in this exact format (no markdown):\n' +
-      '{\n' +
-      '  "verdict": "authentic" or "ai_generated",\n' +
-      '  "confidence": <integer 50-99>,\n' +
-      '  "headline": "<10 words or less>",\n' +
-      '  "explanation": "<2-3 sentences of forensic reasoning>",\n' +
-      '  "signals": [\n' +
-      '    {"name": "<signal name>", "value": "<finding>"},\n' +
-      '    {"name": "<signal name>", "value": "<finding>"},\n' +
-      '    {"name": "<signal name>", "value": "<finding>"}\n' +
-      '  ]\n' +
-      '}';
-
-    const apiUrl = PROXY_URL;
-
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        contents: [{
-          parts: [
-            { text: prompt },
-            { inline_data: { mime_type: mimeType, data: base64 } }
-          ]
-        }],
-        generationConfig: {
-          temperature: 0.05,
-          maxOutputTokens: 2048,
-          topP: 0.8
-        }
-      })
-    });
-
-    if (!response.ok) {
-      const errData = await response.json();
-      throw new Error(errData.error?.message || response.statusText);
-    }
-
-    const data = await response.json();
-    const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!responseText) throw new Error('No response from analysis engine');
-
-    // Parse JSON from response
-    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) throw new Error('Could not parse response');
-    const result = JSON.parse(jsonMatch[0]);
-
-    // Add scan ID
-    result.signals = result.signals || [];
-    result.signals.push({ name: 'Scan ID', value: generateScanId() });
-
-    showVerdict(result);
-  } catch(err) {
-    showError(err.message || 'Analysis failed');
-  }
-}
-
-function showVerdict(r) {
-  document.getElementById('scan-bar').style.display = 'none';
-  const isAI = r.verdict === 'ai_generated';
-  const cls = isAI ? 'ai' : 'authentic';
-  document.getElementById('p-status').textContent = 'Verdict ready';
-
-  const signalsHtml = (r.signals || []).map(function(s) {
-    return '<div class="vc-row"><span class="k">' + s.name + '</span><span class="v">' + s.value + '</span></div>';
-  }).join('');
-
-  document.getElementById('popup-content').innerHTML =
-    '<div class="verdict-card vc-' + cls + '">' +
-      '<div class="vc-top">' +
-        '<span class="vc-chip chip-' + cls + '"><span class="cd"></span>' + (isAI ? 'AI-Generated' : 'Authentic') + '</span>' +
-        '<span class="vc-pct pct-' + cls + '">' + r.confidence + '%</span>' +
-      '</div>' +
-      '<div class="vc-headline">' + r.headline + '</div>' +
-      '<div class="score-bar"><div class="score-fill sf-' + cls + '" style="width:' + r.confidence + '%"></div></div>' +
-      '<div class="vc-text">' + r.explanation + '</div>' +
-      '<div class="vc-rows">' + signalsHtml + '</div>' +
-    '</div>';
-
-  var btn = document.getElementById('scan-btn');
-  btn.textContent = 'Scan another \u2192';
-  btn.disabled = false;
-  btn.onclick = function() { resetPopup(); document.getElementById('file-input').click(); };
-}
-
-function showError(msg) {
-  document.getElementById('scan-bar').style.display = 'none';
-  document.getElementById('p-status').textContent = 'Error';
-  document.getElementById('popup-content').innerHTML =
-    '<div class="verdict-card vc-error">' +
-      '<div class="vc-headline" style="color:#E84855">Scan failed.</div>' +
-      '<div class="vc-error-msg">' + (msg || 'CYPHR could not analyze this image. Try a different file.') + '</div>' +
-    '</div>';
-  var btn = document.getElementById('scan-btn');
-  btn.textContent = 'Try again \u2192';
-  btn.disabled = false;
-  btn.onclick = function() { btn.onclick = startScan; startScan(); };
-}
-
-// Drag & drop on popup image
-var imgZone = document.getElementById('popup-image');
-imgZone.addEventListener('dragover', function(e) { e.preventDefault(); imgZone.style.background = 'rgba(124,58,237,0.1)'; });
-imgZone.addEventListener('dragleave', function() { imgZone.style.background = ''; });
-imgZone.addEventListener('drop', function(e) {
-  e.preventDefault();
-  imgZone.style.background = '';
-  var file = e.dataTransfer.files[0];
-  if (file && file.type.startsWith('image/')) {
-    var dt = new DataTransfer();
-    dt.items.add(file);
-    document.getElementById('file-input').files = dt.files;
-    handleFile({ target: { files: [file] } });
-  }
-});
 </script>
 </body>
 </html>

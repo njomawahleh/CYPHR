@@ -269,7 +269,7 @@ function createResultsDisplay(analysis, imageElement) {
   // --- Footer ---
   html += `
     <div class="ai-detector-footer">
-      <button class="ai-detector-learn-more">About</button>
+      <button class="ai-detector-learn-more">Visit website</button>
       <button class="ai-detector-report">Report</button>
     </div>
   `;
@@ -318,6 +318,53 @@ function createResultsDisplay(analysis, imageElement) {
     if (!container.contains(e.target)) dismiss();
   };
   setTimeout(() => document.addEventListener('mousedown', handleOutsideClick), 0);
+
+  // ===== Drag the results window by its header (Plain n' Simple-style) =====
+  const dragHandle = container.querySelector('.ai-detector-header-bar');
+  const closeBtn = container.querySelector('.ai-detector-close');
+  if (dragHandle) {
+    dragHandle.classList.add('ai-detector-drag-handle');
+    let dragging = false;
+    let startX = 0, startY = 0;
+    let startLeft = 0, startTop = 0;
+
+    const onPointerDown = (e) => {
+      // Don't start drag from the close button
+      if (closeBtn && closeBtn.contains(e.target)) return;
+      if (e.button !== undefined && e.button !== 0) return;
+      dragging = true;
+      container.classList.add('ai-detector-dragging');
+      const rect = container.getBoundingClientRect();
+      startLeft = rect.left;
+      startTop  = rect.top;
+      startX = e.clientX;
+      startY = e.clientY;
+      try { dragHandle.setPointerCapture(e.pointerId); } catch (_) {}
+      e.preventDefault();
+    };
+    const onPointerMove = (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      const margin = 8;
+      const maxLeft = window.innerWidth  - container.offsetWidth  - margin;
+      const maxTop  = window.innerHeight - 40 - margin; // keep header visible
+      const newLeft = Math.min(Math.max(margin, startLeft + dx), Math.max(margin, maxLeft));
+      const newTop  = Math.min(Math.max(margin, startTop  + dy), Math.max(margin, maxTop));
+      container.style.left = newLeft + 'px';
+      container.style.top  = newTop  + 'px';
+    };
+    const onPointerUp = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      container.classList.remove('ai-detector-dragging');
+      try { dragHandle.releasePointerCapture(e.pointerId); } catch (_) {}
+    };
+    dragHandle.addEventListener('pointerdown', onPointerDown);
+    dragHandle.addEventListener('pointermove', onPointerMove);
+    dragHandle.addEventListener('pointerup', onPointerUp);
+    dragHandle.addEventListener('pointercancel', onPointerUp);
+  }
 
   return container;
 }
